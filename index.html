@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SakhiCircle | Your Friendly Menstrual Health Companion</title>
+
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff5f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #ffb6c1;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 2rem; color: #b3005e; }
+    .highlight { color: #d63384; }
+    .subtitle { font-size: 1.1rem; color: #444; margin-top: 0.5rem; }
+
+    main { flex: 1; padding: 2rem; text-align: center; }
+    .intro {
+      max-width: 700px; margin: 0 auto 2rem;
+      font-size: 1.1rem; line-height: 1.7;
+    }
+    .why {
+      background-color: #ffe3ec;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    .why h2 { color: #b3005e; margin-bottom: 1rem; }
+    .why ul { list-style: none; }
+    .why li { margin: 0.5rem 0; font-weight: 500; }
+
+    .links h2 { color: #b3005e; margin-bottom: 1rem; }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background-color: #e75480; transform: scale(1.05); }
+
+    /* Share Section */
+    .share {
+      background-color: #ffe3ec;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .share h2 { color: #b3005e; margin-bottom: 0.5rem; }
+
+    .link-box {
+      background-color: #fff0f5;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #b3005e;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      word-break: break-all;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .link-box:hover { background-color: #ffd6dc; transform: scale(1.03); }
+
+    .copy-msg {
+      display: none;
+      color: green;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: #ffd6dc;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #6b003b;
+      margin-top: auto;
+    }
+    .end-line { margin-top: 0.5rem; font-size: 1.2rem; color: #b3005e; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🌸 Welcome to <span class="highlight">SakhiCircle</span></h1>
+    <p class="subtitle">Your Friendly Menstrual Health Companion</p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>
+        At <strong>SakhiCircle</strong>, we believe menstrual health deserves awareness, empathy, and technology.
+        Our platform combines cycle tracking, awareness quizzes, AI-based support, and social contribution through
+        donations — all in one circle of care.
+      </p>
+    </section>
+
+    <section class="why">
+      <h2>💡 Why SakhiCircle?</h2>
+      <ul>
+        <li>Simple & friendly interface</li>
+        <li>Learn through fun quizzes</li>
+        <li>Track your health and contribute to others</li>
+      </ul>
+    </section>
+
+    <section class="links">
+      <h2>🖱 Quick Links</h2>
+      <div class="button-container">
+        <button onclick="navigateTo('quiz')">Start Quiz</button>
+        <a href="cycle-tracker.html"><button>Cycle Tracker</button></a>
+        <a href="donate.html"><button>Donate Pads</button></a>
+        <a href="about.html"><button>About Us</button></a>
+      </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="share">
+      <h2>🔗 Share Our Website</h2>
+      <p>Click to copy and share this link:</p>
+      <div class="link-box" id="websiteLink" onclick="copyLink()">
+        https://yourusername.github.io/sakhicircle/
+      </div>
+      <p class="copy-msg" id="copyMsg">✅ Link copied to clipboard!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>“Empowering women through awareness and technology.”</p>
+    <p class="end-line">────────────── 🌷 ──────────────</p>
+  </footer>
+
+  <script>
+    function navigateTo(page) {
+      switch (page) {
+        case 'quiz': window.location.href = 'quiz.html'; break;
+        case 'tracker': window.location.href = 'cycle-tracker.html'; break;
+        case 'donate': window.location.href = 'donate.html'; break;
+        case 'about': window.location.href = 'about.html'; break;
+        default: alert("Coming soon!");
+      }
+    }
+
+    function copyLink() {
+      const link = document.getElementById("websiteLink").innerText;
+      navigator.clipboard.writeText(link);
+      const msg = document.getElementById("copyMsg");
+      msg.style.display = "block";
+      setTimeout(() => (msg.style.display = "none"), 2000);
+    }
+  </script>
+</body>
+</html>
+
+
+

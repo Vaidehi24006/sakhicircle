@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awareness Quiz | SakhiCircle</title>
+  <style>
+    /* 🌸 General Page Style */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff5f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #ffb6c1;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      color: #b3005e;
+      font-size: 1.8rem;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .quiz-container {
+      background-color: #ffe3ec;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #b3005e;
+      margin-bottom: 1rem;
+    }
+
+    .options label {
+      display: block;
+      background: white;
+      border-radius: 8px;
+      padding: 0.7rem;
+      margin: 0.5rem 0;
+      border: 2px solid transparent;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .options input {
+      display: none;
+    }
+
+    .options label:hover {
+      border-color: #ff69b4;
+      background-color: #ffe9f1;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e75480;
+      transform: scale(1.05);
+    }
+
+    .result {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      color: #b3005e;
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: #ffd6dc;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #6b003b;
+      margin-top: auto;
+    }
+
+    .end-line {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #b3005e;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🎯 Test Your Knowledge – Menstrual Awareness Quiz</h1>
+  </header>
+
+  <main>
+    <section class="quiz-container" id="quiz">
+      <p class="question" id="question"></p>
+      <div class="options" id="options"></div>
+      <button id="nextBtn">Next</button>
+      <p class="result" id="result"></p>
+      <button id="homeBtn" style="display:none;" onclick="goHome()">⬅ Back to Home</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>────────────── 🌷 ──────────────</p>
+  </footer>
+
+  <script>
+    const quizData = [
+      {
+        question: "1️⃣ Can you swim during periods?",
+        options: ["Yes", "No"],
+        answer: "Yes"
+      },
+      {
+        question: "2️⃣ What is the average menstrual cycle length?",
+        options: ["21 days", "28 days", "35 days"],
+        answer: "28 days"
+      },
+      {
+        question: "3️⃣ Which nutrient is most important during menstruation?",
+        options: ["Iron", "Calcium", "Vitamin D"],
+        answer: "Iron"
+      },
+      {
+        question: "4️⃣ What causes menstrual cramps?",
+        options: ["Dehydration", "Uterine contractions", "Fatigue"],
+        answer: "Uterine contractions"
+      },
+      {
+        question: "5️⃣ What product can be reused during periods?",
+        options: ["Sanitary pad", "Menstrual cup", "Tissue paper"],
+        answer: "Menstrual cup"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("nextBtn");
+    const resultEl = document.getElementById("result");
+    const homeBtn = document.getElementById("homeBtn");
+
+    function loadQuestion() {
+      const current = quizData[currentQuestion];
+      questionEl.textContent = current.question;
+      optionsEl.innerHTML = "";
+      current.options.forEach(option => {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="radio" name="answer" value="${option}"> ${option}`;
+        optionsEl.appendChild(label);
+      });
+    }
+
+    nextBtn.addEventListener("click", () => {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      if (!selected) {
+        alert("Please select an answer!");
+        return;
+      }
+
+      if (selected.value === quizData[currentQuestion].answer) {
+        score++;
+      }
+
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      questionEl.textContent = "🎉 Quiz Completed!";
+      optionsEl.innerHTML = "";
+      nextBtn.style.display = "none";
+      resultEl.textContent = `You scored ${score} out of ${quizData.length}!`;
+      homeBtn.style.display = "inline-block";
+    }
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    // Start quiz
+    loadQuestion();
+  </script>
+</body>
+</html>
