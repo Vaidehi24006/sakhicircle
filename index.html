@@ -6,7 +6,13 @@
   <title>SakhiCircle | Your Friendly Menstrual Health Companion</title>
 
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
+    /* ---------- CSS START ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #fff5f8;
@@ -16,32 +22,70 @@
       min-height: 100vh;
     }
 
+    /* Header */
     header {
       background-color: #ffb6c1;
       text-align: center;
       padding: 2rem 1rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-    header h1 { font-size: 2rem; color: #b3005e; }
-    .highlight { color: #d63384; }
-    .subtitle { font-size: 1.1rem; color: #444; margin-top: 0.5rem; }
 
-    main { flex: 1; padding: 2rem; text-align: center; }
-    .intro {
-      max-width: 700px; margin: 0 auto 2rem;
-      font-size: 1.1rem; line-height: 1.7;
+    header h1 {
+      font-size: 2rem;
+      color: #b3005e;
     }
+
+    .highlight {
+      color: #d63384;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #444;
+      margin-top: 0.5rem;
+    }
+
+    /* Main */
+    main {
+      flex: 1;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
     .why {
       background-color: #ffe3ec;
       padding: 1.5rem;
       border-radius: 10px;
       margin-bottom: 2rem;
     }
-    .why h2 { color: #b3005e; margin-bottom: 1rem; }
-    .why ul { list-style: none; }
-    .why li { margin: 0.5rem 0; font-weight: 500; }
 
-    .links h2 { color: #b3005e; margin-bottom: 1rem; }
+    .why h2 {
+      color: #b3005e;
+      margin-bottom: 1rem;
+    }
+
+    .why ul {
+      list-style: none;
+    }
+
+    .why li {
+      margin: 0.5rem 0;
+      font-weight: 500;
+    }
+
+    /* Links & Buttons */
+    .links h2 {
+      color: #b3005e;
+      margin-bottom: 1rem;
+    }
+
     .button-container {
       display: flex;
       justify-content: center;
@@ -49,7 +93,7 @@
       flex-wrap: wrap;
     }
 
-    button {
+    button, a.share-link {
       background-color: #ff69b4;
       color: white;
       border: none;
@@ -58,41 +102,16 @@
       font-size: 1rem;
       cursor: pointer;
       transition: 0.3s;
-    }
-    button:hover { background-color: #e75480; transform: scale(1.05); }
-
-    /* Share Section */
-    .share {
-      background-color: #ffe3ec;
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin-top: 2rem;
-      text-align: center;
-    }
-    .share h2 { color: #b3005e; margin-bottom: 0.5rem; }
-
-    .link-box {
-      background-color: #fff0f5;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: 600;
-      color: #b3005e;
+      text-decoration: none;
       display: inline-block;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      word-break: break-all;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .link-box:hover { background-color: #ffd6dc; transform: scale(1.03); }
-
-    .copy-msg {
-      display: none;
-      color: green;
-      margin-top: 10px;
-      font-size: 0.9rem;
-      font-weight: 600;
     }
 
+    button:hover, a.share-link:hover {
+      background-color: #e75480;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
     footer {
       background-color: #ffd6dc;
       text-align: center;
@@ -101,7 +120,13 @@
       color: #6b003b;
       margin-top: auto;
     }
-    .end-line { margin-top: 0.5rem; font-size: 1.2rem; color: #b3005e; }
+
+    .end-line {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #b3005e;
+    }
+    /* ---------- CSS END ---------- */
   </style>
 </head>
 
@@ -139,14 +164,15 @@
       </div>
     </section>
 
-    <!-- Share Section -->
     <section class="share">
       <h2>🔗 Share Our Website</h2>
-      <p>Click to copy and share this link:</p>
-      <div class="link-box" id="websiteLink" onclick="copyLink()">
-        https://yourusername.github.io/sakhicircle/
-      </div>
-      <p class="copy-msg" id="copyMsg">✅ Link copied to clipboard!</p>
+      <p>Copy and share our website link with your friends and help spread awareness 💕</p>
+      <a href="https://vaidehi24006.github.io" target="_blank" class="share-link">
+        Visit SakhiCircle Website 🌸
+      </a>
+      <p style="margin-top: 10px; color: #b3005e;">
+        https://vaidehi24006.github.io
+      </p>
     </section>
   </main>
 
@@ -156,23 +182,23 @@
   </footer>
 
   <script>
+    /* ---------- JS START ---------- */
     function navigateTo(page) {
       switch (page) {
-        case 'quiz': window.location.href = 'quiz.html'; break;
-        case 'tracker': window.location.href = 'cycle-tracker.html'; break;
-        case 'donate': window.location.href = 'donate.html'; break;
-        case 'about': window.location.href = 'about.html'; break;
-        default: alert("Coming soon!");
+        case 'quiz':
+          window.location.href = 'quiz.html';
+          break;
+        case 'tracker':
+          window.location.href = 'cycle-tracker.html';
+          break;
+        case 'donate':
+          window.location.href = 'donate.html';
+          break;
+        default:
+          alert("Coming soon!");
       }
     }
-
-    function copyLink() {
-      const link = document.getElementById("websiteLink").innerText;
-      navigator.clipboard.writeText(link);
-      const msg = document.getElementById("copyMsg");
-      msg.style.display = "block";
-      setTimeout(() => (msg.style.display = "none"), 2000);
-    }
+    /* ---------- JS END ---------- */
   </script>
 </body>
 </html>
